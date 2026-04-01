@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-surface: #041329;
+  --color-surface-container-lowest: #010e24;
+  --color-surface-container-low: #0d1c32;
+  --color-surface-container: #112036;
+  --color-surface-container-high: #1c2a41;
+  --color-surface-container-highest: #27354c;
+  
+  --color-primary-fixed: #5ffbd6;
+  --color-primary-fixed-dim: #38debb;
+  --color-on-primary-fixed: #002019;
+  
+  --color-secondary: #b9c7e4;
+  --color-secondary-container: #3c4962;
+  --color-on-secondary-container: #abb9d6;
+  
+  --color-on-surface: #d6e3ff;
+  --color-on-surface-variant: #bacac3;
+  
+  --color-outline: #85948e;
+  --color-outline-variant: #3c4a45;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-body selection:bg-primary-fixed/30 selection:text-primary-fixed;
+    scroll-behavior: smooth;
+  }
+}
+
+.glass-nav {
+  background: rgba(4, 19, 41, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #38debb 0%, #5ffbd6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #041329;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27354c;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3c4a45;
+}
