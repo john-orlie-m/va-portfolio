@@ -438,17 +438,9 @@ const Certificates = () => {
 
   const certificates = [
   {
-    title: "Getting Started with Cisco Packet Tracer",
-    img: "/certificates/Getting started cisco packet tracer.pdf.png",
-  },
-  {
     title: "HTML and CSS Certification",
     img: "/certificates/HTMLandCSS.png",
-  },
-  {
-    title: "Introduction to IoT",
-    img: "/certificates/Introduction to IoT.pdf.png",
-  },
+  },,
   {
     title: "PowerPoint 2019 Associate",
     img: "/certificates/PowerPoint 2019 Associate.pdf.png",
