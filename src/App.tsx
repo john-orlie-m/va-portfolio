@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from '@formspree/react';
+import Projects from './sections/Projects';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -259,145 +260,7 @@ const Services = () => {
   );
 };
 
-type Project = {
-  title: string;
-  tags: string[];
-  desc: string;
-  longDesc: string;
-  img: string;
-};
 
-const Portfolio = () => {
-  const [selectedProject, setSelectedProject] = useState<null | Project>(null);
-
-  const projects: Project[] = [
-    {
-      title: "E-Commerce Ops Automation",
-      tags: ["Admin", "Tech"],
-      desc: "Problem: Client lost 10 hours/week manually syncing sales data. Solution: Built a custom Zapier bridge and automated Shopify reporting.",
-      longDesc: "This project involved a deep dive into the client's existing manual workflows. By mapping out every touchpoint between Shopify and their reporting tools, I was able to identify critical bottlenecks. I implemented a multi-step Zapier automation that not only synced data in real-time but also performed data validation to ensure accuracy. The result was a 100% reduction in manual data entry time and a significant increase in reporting reliability.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAO6GUBJnRtGPwe89eDRJzEor0V4XKLUkjurlvpArYHxZzuF0eTux0AkHc5HfgE4PHpjz0CkLTrKed3WAJ_Qu4ty9TVn_nKJwvbsg3yl8g48Aojt58uxnjStNoXwH-wZCMCJpj4-mBAGHXXfl_TuU1ZiMvpfGa1BtOGYJ0bMzDKwwprKn6-CqkTqWaXGQLfwgZi1I8QqS3eZDyHgx_TNXNj4SQcydi0uo0ub_IDFzJ9zxa--hvZjlGelkjsMUaPioTI1q2mkv8qU0o"
-    },
-    {
-      title: "Tech Consultant Portfolio",
-      tags: ["Web"],
-      desc: "Problem: Slow loading site and broken CSS on mobile. Solution: Refactored HTML/CSS and optimized asset delivery for a 95+ PageSpeed score.",
-      longDesc: "The original site was built on a bloated theme with excessive third-party scripts. I performed a full audit and refactored the core HTML and CSS to be more semantic and lightweight. I also implemented modern image optimization techniques and lazy loading. The final product achieved a near-perfect Google PageSpeed score and provided a seamless experience across all device types, directly contributing to a 25% increase in lead generation for the client.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXqUUyJv2XtbogIUyg9903AWfJQXrD7FRyEGljpVPvv6-hgNapKx7c5uFeenXvPTOwYXjJGrGLotox5WF_alAIYWErrfzT6aZxkv-HbmV_yw3E_s65j5clU-Hy2XQ-6aTMywjFUIiHTIZUoWOruNEGP7xooSkuA62HRHuL6NYUqaH05jqACoSKYi6MWvhFMYcgz4r-TbIMOU_zy4WkuBCdqBLjy9ttNfV4q0hDUZ0kYWhdDfKdQ14RAPOFo-rMMlXtd3IrGzQTSFc"
-    },
-    {
-      title: "CRM System Migration",
-      tags: ["Admin", "Tech"],
-      desc: "Problem: Messy CSV data and duplicated contacts. Solution: Cleaned 5,000+ entries using Python scripts and migrated to Notion CRM.",
-      longDesc: "The client was struggling with fragmented data across multiple legacy systems. I developed a series of Python scripts to extract, clean, and deduplicate over 5,000 contact records. I then designed and implemented a custom CRM architecture in Notion, tailored specifically to the client's sales pipeline. This migration provided the team with a single source of truth and enabled advanced tracking and reporting that was previously impossible.",
-      img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBooXQLWa_19XOanMsbP5MGA5U1-FZ1YFTjDsBMjC6FASLMBxFf__1z5_3QoZklFbQX7BD8k61jN4DmhIJgWONMUrJpcvTx90LVGmHudWikv1QYfxMwxYr9Fyca44TB5wboltNdz4L1cYdSqjMOHLtv5eEkEh437eufDhmfIBmwI20ASC0-B8zU3TpUjt_6cuOKnFHvSgVvbpTF25cY-ALQGz6fLOPEl_a9gEBJBl4ied41BN7oC3plEOrBy6mfz1IaUAwVDMu1Dxc"
-    }
-  ];
-
-  return (
-    <section className="py-32 px-6 md:px-12 bg-surface-container-lowest" id="portfolio">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-headline font-bold mb-16 text-center">Selected <span className="text-primary-fixed">Works</span></h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {projects.map((project, idx) => (
-            <motion.div 
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-surface shadow-xl flex flex-col group border border-outline-variant/10"
-            >
-              <div className="aspect-video bg-surface-container-low overflow-hidden">
-                <img 
-                  alt={project.title} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                  src={project.img}
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-8 grow flex flex-col">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-[9px] uppercase tracking-widest text-primary-fixed-dim border border-primary-fixed-dim/30 px-2 py-0.5 font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-xl font-headline font-bold mb-3">{project.title}</h3>
-                <p className="text-secondary text-sm mb-6 grow leading-relaxed">{project.desc}</p>
-                <button 
-                  onClick={() => setSelectedProject(project)}
-                  className="text-primary-fixed font-bold text-sm flex items-center gap-2 hover:gap-4 transition-all group/btn"
-                >
-                  View Project <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Project Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={() => setSelectedProject(null)}
-            className="absolute inset-0 bg-surface-container-lowest/90 backdrop-blur-sm"
-          ></motion.div>
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            className="relative bg-surface-container-low max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-outline-variant/10 shadow-2xl"
-          >
-            <button 
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 text-secondary hover:text-primary-fixed transition-colors z-10"
-            >
-              <X size={32} />
-            </button>
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="aspect-square md:aspect-auto bg-surface-container-highest">
-                <img 
-                  src={selectedProject.img} 
-                  alt={selectedProject.title} 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="p-12">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {selectedProject.tags.map(tag => (
-                    <span key={tag} className="text-[10px] uppercase tracking-widest text-primary-fixed-dim border border-primary-fixed-dim/30 px-3 py-1 font-bold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <h3 className="text-3xl font-headline font-bold mb-6">{selectedProject.title}</h3>
-                <div className="space-y-6 text-secondary font-body leading-relaxed">
-                  <p className="font-bold text-on-surface">The Challenge:</p>
-                  <p>{selectedProject.desc.split("Solution:")[0].replace("Problem:", "")}</p>
-                  <p className="font-bold text-on-surface">The Solution:</p>
-                  <p>{selectedProject.longDesc}</p>
-                </div>
-                <div className="mt-12">
-                  <button 
-                    onClick={() => setSelectedProject(null)}
-                    className="w-full py-4 bg-primary-fixed text-on-primary-fixed font-bold uppercase tracking-widest text-xs rounded-sm"
-                  >
-                    Close Project
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </section>
-  );
-};
 
 const Skills = () => {
   const skills = [
@@ -440,7 +303,7 @@ const Certificates = () => {
   {
     title: "HTML and CSS Certification",
     img: "/certificates/HTMLandCSS.png",
-  },,
+  },
   {
     title: "PowerPoint 2019 Associate",
     img: "/certificates/PowerPoint 2019 Associate.pdf.png",
@@ -738,7 +601,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
-        <Portfolio />
+        <Projects />
         <Skills />
         <Certificates />
         <Contact />
