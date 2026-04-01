@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from '@formspree/react';
-import {cisco, htmlcss, iot, powerpoint, word} from "./certificates";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -438,27 +437,27 @@ const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState<typeof certificates[0] | null>(null);
 
   const certificates = [
-    {
-      title: "Getting Started with Cisco Packet Tracer",
-      img: {cisco},
-    },
-    {
-      title: "HTML and CSS Certification",
-      img: {htmlcss},
-    },
-    {
-      title: "Introduction to IoT",
-      img: {iot},
-    },
-    {
-      title: "PowerPoint 2019 Associate",
-      img: {powerpoint},
-    },
-    {
-      title: "Word 2019 Associate",
-      img: {word},
-    },
-  ];
+  {
+    title: "Getting Started with Cisco Packet Tracer",
+    img: "/certificates/Getting started cisco packet tracer.pdf.png",
+  },
+  {
+    title: "HTML and CSS Certification",
+    img: "/certificates/HTML and CSS - expiration_2_4_2031.png",
+  },
+  {
+    title: "Introduction to IoT",
+    img: "/certificates/Introduction to IoT.pdf.png",
+  },
+  {
+    title: "PowerPoint 2019 Associate",
+    img: "/certificates/PowerPoint 2019 Associate.pdf.png",
+  },
+  {
+    title: "Word 2019 Associate",
+    img: "/certificates/Word 2019 Associate.pdf.png",
+  },
+];
 
   return (
     <>
