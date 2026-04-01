@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from '@formspree/react';
+import profile from "../images/profile_port.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -146,7 +147,7 @@ const Hero = () => {
             <img 
               alt="profile" 
               className="w-full h-full object-cover" 
-              src="../images/profile_port.png"
+              src={profile}
               referrerPolicy="no-referrer"
             />
           </div>
