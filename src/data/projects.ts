@@ -15,7 +15,7 @@ export const projects: Project[] = [
     category: "Admin",
     description: "Cleaned and organized a 75-row client contact database for a fictional e-commerce store. Standardized formats, removed duplicates, and added filters for easy sorting.",
     tools: ["Google Sheets"],
-    image: "/image/projects/Clean Version.png",
+    image: "/image/projects/clean-version.png",
     link: "https://docs.google.com/spreadsheets/d/1cHRgY_Zx7eR5lqsXJMQph3YV1AvHZ1Kw-L3IZlLVMRk/edit?usp=sharing"
   },
   {
