@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from '@formspree/react';
+import {cisco, htmlcss, iot, powerpoint, word} from "./certificates";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -439,23 +440,23 @@ const Certificates = () => {
   const certificates = [
     {
       title: "Getting Started with Cisco Packet Tracer",
-      img: "/certificates/Getting started cisco packet tracer.pdf.png",
+      img: {cisco},
     },
     {
       title: "HTML and CSS Certification",
-      img: "/certificates/HTML and CSS - expiration_ 2_4_2031.pdf.png",
+      img: {htmlcss},
     },
     {
       title: "Introduction to IoT",
-      img: "/certificates/Introduction to IoT.pdf.png",
+      img: {iot},
     },
     {
       title: "PowerPoint 2019 Associate",
-      img: "/certificates/PowerPoint 2019 Associate.pdf.png",
+      img: {powerpoint},
     },
     {
       title: "Word 2019 Associate",
-      img: "/certificates/Word 2019 Associate.pdf.png",
+      img: {word},
     },
   ];
 
