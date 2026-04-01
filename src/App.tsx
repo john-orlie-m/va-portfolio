@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from '@formspree/react';
-import profile from "../images/profile_port.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -144,10 +143,10 @@ const Hero = () => {
           className="lg:col-span-5 hidden lg:block"
         >
           <div className="aspect-square bg-surface-container-low relative group rounded-3xl overflow-hidden border border-outline-variant/10">
-            <img 
-              alt="profile" 
-              className="w-full h-full object-cover" 
-              src={profile}
+            <img
+              alt="profile"
+              className="w-full h-full object-cover"
+              src="./profile_port.png"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -665,7 +664,7 @@ const Footer = () => {
           </a>
           <a 
             className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300" 
-            href="https://github.com/john-orlie-ma"
+            href="https://github.com/john-orlie-m"
             target="_blank"
             rel="noopener noreferrer"
           >
