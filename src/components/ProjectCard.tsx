@@ -9,10 +9,10 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <div className="bg-surface shadow-xl flex flex-col group border border-outline-variant/10 hover:shadow-2xl transition-shadow duration-300">
-      <div className="aspect-video bg-surface-container-low overflow-hidden">
+      <div className="bg-surface-container-highest overflow-hidden" style={{ height: '200px' }}>
         <img
           alt={project.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover object-top"
           src={project.image}
           referrerPolicy="no-referrer"
         />
@@ -21,8 +21,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <span className="text-[9px] uppercase tracking-widest text-primary-fixed-dim border border-primary-fixed-dim/30 px-2 py-0.5 font-bold mb-4 w-fit">
           {project.category}
         </span>
-        <h3 className="text-xl font-headline font-bold mb-3">{project.title}</h3>
-        <p className="text-secondary text-sm mb-6 grow leading-relaxed">{project.description}</p>
+        <h3 className="text-xl font-headline font-bold mb-3 min-h-15">{project.title}</h3>
+        <p className="text-secondary text-sm mb-6 grow leading-relaxed min-h-24">{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tools.map(tool => (
             <span key={tool} className="text-[10px] uppercase tracking-widest bg-surface-container-highest text-secondary border border-outline-variant/20 px-2 py-1 font-medium">
