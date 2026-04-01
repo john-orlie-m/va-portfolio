@@ -35,5 +35,14 @@ export const projects: Project[] = [
     tools: ["Google Docs"],
     image: "/image/projects/SOP_documentation.png",
     link: "//drive.google.com/file/d/1UwKPLHhaKKstOeCuyT3tSCmr3DpYVTJr/view"
+  },
+  {
+    id: "life-coach-landing",
+    title: "Life Coach Landing Page",
+    category: "Admin",
+    description: "Built a fully responsive Life Coach landing page from scratch using React, Vite, and Tailwind CSS. Features a hero section, services cards, testimonials, and a contact form. Deployed live on Vercel as a sample client deliverable demonstrating Website VA capabilities.",
+    tools: ["Vite, React, Tailwind CSS, TypeScript, Vercel"],
+    image: "/image/projects/landing-page.png",
+    link: "https://life-coach-page.vercel.app/"
   }
 ];
