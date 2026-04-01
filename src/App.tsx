@@ -443,7 +443,7 @@ const Certificates = () => {
   },
   {
     title: "HTML and CSS Certification",
-    img: "/certificates/HTML and CSS - expiration_2_4_2031.pdf.png",
+    img: "/certificates/HTMLandCSS.png",
   },
   {
     title: "Introduction to IoT",
