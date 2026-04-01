@@ -1,28 +1,21 @@
 import { motion } from "motion/react";
-import { 
-  ShieldCheck, 
-  Terminal, 
-  CheckCircle2, 
-  ArrowRight, 
-  Mail, 
-  Layout, 
-  FileText, 
-  MessageSquare, 
-  Palette, 
-  Globe, 
-  Code, 
-  Box, 
-  Zap, 
-  Send, 
+import {
+  ShieldCheck,
+  Terminal,
+  CheckCircle2,
+  ArrowRight,
   Calendar,
-  Star,
-  Github,
-  Linkedin,
-  ExternalLink,
   Menu,
-  X
+  X,
+  Mail,
+  FileText,
+  Palette,
+  Globe,
+  Code,
+  Box,
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { useForm, ValidationError } from '@formspree/react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,14 +32,14 @@ const Navbar = () => {
     { name: "Services", href: "#services" },
     { name: "Portfolio", href: "#portfolio" },
     { name: "Skills", href: "#skills" },
-    { name: "Testimonials", href: "#testimonials" },
+    { name: "Certificates", href: "#certificates" },
   ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "glass-nav py-3" : "bg-transparent py-6"}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <div className="text-2xl font-bold tracking-tighter text-primary-fixed font-headline">
-          ARCHITECT.VA
+          JOM
         </div>
         
         {/* Desktop Nav */}
@@ -106,7 +99,7 @@ const Navbar = () => {
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center pt-20 px-6 md:px-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_#1c2a41_0%,_transparent_70%)] opacity-30"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#1c2a41_0%,transparent_70%)] opacity-30"></div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
@@ -122,7 +115,7 @@ const Hero = () => {
             Tech-Savvy <span className="text-primary-fixed">Virtual Assistant</span> | Web Development + Admin Support
           </h1>
           <p className="text-lg md:text-xl text-secondary leading-relaxed mb-10 max-w-2xl font-body font-light">
-            Bridging the gap between high-level administrative mastery and architectural technical rigor. I don't just manage your tasks; I engineer your workflows.
+            I help small business owners save time by handling their admin tasks and website needs — so they can focus on growing their business. I don't just manage your tasks; I engineer your workflows.
           </p>
           <div className="flex flex-wrap gap-6">
             <a 
@@ -132,7 +125,7 @@ const Hero = () => {
               View My Work
             </a>
             <a 
-              href="https://calendly.com/architect-va" 
+              href="https://calendly.com/orlie-mascardo/new-meeting" 
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-secondary-container text-on-secondary-container font-bold hover:bg-surface-container-high transition-all rounded-sm"
@@ -149,17 +142,13 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="lg:col-span-5 hidden lg:block"
         >
-          <div className="aspect-square bg-surface-container-low relative group">
+          <div className="aspect-square bg-surface-container-low relative group rounded-3xl overflow-hidden border border-outline-variant/10">
             <img 
-              alt="Technical workspace" 
-              className="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR6x6QQSHYSX3g1X1n3PH5-bGnuLZ4ngP1EpzO-AotpkjMn6VUb0vKxsYRdV95-ZsjKD28oOKJ2ZL0zOEz5GR_C9t8lG1018UNbzqS6K9kk6FqvNd0OWlG93TnvccrZdq6dCMgaS-h5OaAM1K-TSTPTqMrlVvGM6StNNbBrkzPLODb9s20w7sKyUlHVr1qSxrju8V9MMVu9z-tjry5iiONfQqE-chFCu1beJ3xdK9gLc5muywGrEm9gKMaApKGy7y7I28Hb3mRlTg"
+              alt="profile" 
+              className="w-full h-full object-cover" 
+              src="../images/profile_port.png"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute -bottom-6 -left-6 p-6 bg-surface-container-high shadow-2xl border border-outline-variant/10">
-              <p className="font-headline font-bold text-4xl text-primary-fixed">100%</p>
-              <p className="text-[10px] uppercase tracking-widest text-secondary font-semibold">Efficiency Optimized</p>
-            </div>
           </div>
         </motion.div>
       </div>
@@ -170,7 +159,7 @@ const Hero = () => {
 const About = () => {
   return (
     <section className="py-32 px-6 md:px-12 bg-surface-container-lowest" id="about">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+      <div className="max-w-7xl mx-auto grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -179,31 +168,18 @@ const About = () => {
         >
           <h2 className="text-4xl font-headline font-bold text-primary mb-4">About Me</h2>
           <p>
-            As a dedicated BSIT student, I approach virtual assistance with the mindset of an architect. I thrive on creating systems that are not only functional but resilient and scalable. My background in Information Technology allows me to navigate complex technical landscapes while maintaining the meticulous attention to detail required for executive administration.
+          I'm a BSIT student and Tech-Savvy Virtual Assistant who combines 
+          admin efficiency with real web development skills.
           </p>
           <p>
-            I understand that your time is the most valuable asset you have. My mission is to reclaim those hours for you by implementing smart automations and providing seamless administrative support. Whether it's debugging a WordPress issue or organizing a chaotic inbox, I treat every task as a critical component of your business's infrastructure.
+          I help small business owners save time by managing their inbox, 
+          organizing their operations, and actually fixing their website — 
+          not just flagging the problem.
           </p>
           <p>
-            When I'm not optimizing workflows or studying system architecture, I’m constantly refining my skills in React, Next.js, and modern web frameworks. I’m not just an assistant; I’m a technical partner invested in your long-term operational success.
+          If you need someone who can jump between a spreadsheet and a 
+          codebase without missing a beat, I'm your guy.
           </p>
-        </motion.div>
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="relative"
-        >
-          <div className="aspect-[4/5] bg-surface-container-low overflow-hidden border border-outline-variant/10">
-            <img 
-              alt="Professional profile" 
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWY7BHj68aMIfax4kaOdq4wNRrcj6XE0O7-LmRV-t6De1kOuhp2aW9u2l1mNxnFvk-xDV4aV3dhaVcCf58lUfgSfMZ1GfDSe4-vOmkTArSwo1GydyphtG8BI_LpK5ggJWyncNa2y7je6vQU4Ren0QkOpA70M3iA1lm9bUr9UNGcCm1zvSLYBJau8SqpfVWFpB1NjdoURNoBHSu5qOaESdyQ4w5Tpv_EJypRYbKZ7dCNAKlH1t9AQUg5EuE2CyXX7wjkMCkqzX32PY"
-              referrerPolicy="no-referrer"
-            />
-          </div>
-          <div className="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary-fixed/30"></div>
-          <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-primary-fixed/30"></div>
         </motion.div>
       </div>
     </section>
@@ -212,19 +188,17 @@ const About = () => {
 
 const Services = () => {
   const adminServices = [
-    "Email Management & Inbox Zero",
-    "Calendar Scheduling & Optimization",
-    "Precision Data Entry & Database Cleanup",
-    "Systematic File Organization (Cloud-based)",
-    "Deep-Dive Market & Competitor Research",
+    { id: "admin-1", text: "Email Management & Inbox Zero" },
+    { id: "admin-2", text: "Calendar Scheduling & Optimization" },
+    { id: "admin-3", text: "Precision Data Entry & Database Cleanup" },
+    { id: "admin-4", text: "Systematic File Organization (Cloud-based)" },
   ];
 
   const techServices = [
-    "Website Content Updates & Maintenance",
-    "Landing Page Builds (High Conversion)",
-    "WordPress & Elementor Management",
-    "Zapier & Make Workflow Automations",
-    "HTML/CSS/JS Troubleshooting & Fixes",
+    { id: "tech-1", text: "Website Content Updates & Maintenance" },
+    { id: "tech-2", text: "Landing Page Builds" },
+    { id: "tech-3", text: "WordPress & Elementor Management" },
+    { id: "tech-5", text: "HTML/CSS/JS Troubleshooting & Fixes" },
   ];
 
   return (
@@ -250,10 +224,10 @@ const Services = () => {
               <h3 className="text-2xl font-headline font-bold">Admin VA Services</h3>
             </div>
             <ul className="space-y-6">
-              {adminServices.map((service, idx) => (
-                <li key={idx} className="flex items-center gap-4 text-secondary">
+              {adminServices.map((service) => (
+                <li key={service.id} className="flex items-center gap-4 text-secondary">
                   <CheckCircle2 className="text-primary-fixed-dim" size={18} />
-                  <span className="font-body">{service}</span>
+                  <span className="font-body">{service.text}</span>
                 </li>
               ))}
             </ul>
@@ -271,10 +245,10 @@ const Services = () => {
               <h3 className="text-2xl font-headline font-bold">Tech & Web VA Services</h3>
             </div>
             <ul className="space-y-6">
-              {techServices.map((service, idx) => (
-                <li key={idx} className="flex items-center gap-4 text-secondary">
+              {techServices.map((service) => (
+                <li key={service.id} className="flex items-center gap-4 text-secondary">
                   <CheckCircle2 className="text-primary-fixed-dim" size={18} />
-                  <span className="font-body">{service}</span>
+                  <span className="font-body">{service.text}</span>
                 </li>
               ))}
             </ul>
@@ -285,10 +259,18 @@ const Services = () => {
   );
 };
 
-const Portfolio = () => {
-  const [selectedProject, setSelectedProject] = useState<null | typeof projects[0]>(null);
+type Project = {
+  title: string;
+  tags: string[];
+  desc: string;
+  longDesc: string;
+  img: string;
+};
 
-  const projects = [
+const Portfolio = () => {
+  const [selectedProject, setSelectedProject] = useState<null | Project>(null);
+
+  const projects: Project[] = [
     {
       title: "E-Commerce Ops Automation",
       tags: ["Admin", "Tech"],
@@ -319,7 +301,7 @@ const Portfolio = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <motion.div 
-              key={idx}
+              key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -334,7 +316,7 @@ const Portfolio = () => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className="p-8 flex-grow flex flex-col">
+              <div className="p-8 grow flex flex-col">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map(tag => (
                     <span key={tag} className="text-[9px] uppercase tracking-widest text-primary-fixed-dim border border-primary-fixed-dim/30 px-2 py-0.5 font-bold">
@@ -343,7 +325,7 @@ const Portfolio = () => {
                   ))}
                 </div>
                 <h3 className="text-xl font-headline font-bold mb-3">{project.title}</h3>
-                <p className="text-secondary text-sm mb-6 flex-grow leading-relaxed">{project.desc}</p>
+                <p className="text-secondary text-sm mb-6 grow leading-relaxed">{project.desc}</p>
                 <button 
                   onClick={() => setSelectedProject(project)}
                   className="text-primary-fixed font-bold text-sm flex items-center gap-2 hover:gap-4 transition-all group/btn"
@@ -358,7 +340,7 @@ const Portfolio = () => {
 
       {/* Project Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -420,16 +402,12 @@ const Portfolio = () => {
 const Skills = () => {
   const skills = [
     { name: "Google Workspace", icon: Mail },
-    { name: "Trello", icon: Layout },
     { name: "Notion", icon: FileText },
-    { name: "Slack", icon: MessageSquare },
     { name: "Canva", icon: Palette },
     { name: "WordPress", icon: Globe },
     { name: "React", icon: Code },
     { name: "Next.js", icon: Box },
     { name: "HTML/CSS/JS", icon: Code },
-    { name: "Zapier", icon: Zap },
-    { name: "Mailchimp", icon: Send },
   ];
 
   return (
@@ -440,18 +418,14 @@ const Skills = () => {
           <p className="text-secondary font-body">Battle-tested tools and frameworks I use to drive results.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-          {skills.map((skill, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.05 }}
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
               className="flex items-center gap-2 bg-surface-container-highest px-6 py-3 rounded-full text-sm font-body font-medium hover:bg-surface-container-high transition-colors border border-outline-variant/10 cursor-default"
             >
               <skill.icon size={16} className="text-primary-fixed-dim" />
               {skill.name}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -459,105 +433,124 @@ const Skills = () => {
   );
 };
 
-const Testimonials = () => {
-  const reviews = [
+const Certificates = () => {
+  const [selectedCert, setSelectedCert] = useState<typeof certificates[0] | null>(null);
+
+  const certificates = [
     {
-      name: "Sarah Jenkins",
-      role: "Founder, TechSprint",
-      text: "Working with Architect.VA was a game changer. The technical proficiency they brought to our admin tasks saved us hours of troubleshooting."
+      title: "Getting Started with Cisco Packet Tracer",
+      img: "/certificates/Getting started cisco packet tracer.pdf.png",
     },
     {
-      name: "Michael Chen",
-      role: "Agency Owner",
-      text: "Finally, a VA who actually knows how to fix a WordPress site without me having to hire a separate dev. Highly recommend!"
+      title: "HTML and CSS Certification",
+      img: "/certificates/HTML and CSS - expiration_ 2_4_2031.pdf.png",
     },
     {
-      name: "David Ross",
-      role: "Operations Manager",
-      text: "The data organization and automation they set up for our CRM was flawless. Clean, logic-driven, and perfectly executed."
-    }
+      title: "Introduction to IoT",
+      img: "/certificates/Introduction to IoT.pdf.png",
+    },
+    {
+      title: "PowerPoint 2019 Associate",
+      img: "/certificates/PowerPoint 2019 Associate.pdf.png",
+    },
+    {
+      title: "Word 2019 Associate",
+      img: "/certificates/Word 2019 Associate.pdf.png",
+    },
   ];
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-surface-container-low" id="testimonials">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-headline font-bold mb-16 text-center">Client <span className="text-primary-fixed">Feedback</span></h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reviews.map((review, idx) => (
-            <motion.div 
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="bg-surface p-10 relative border border-outline-variant/10"
-            >
-              <div className="text-primary-fixed-dim mb-4 flex gap-1">
-                {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
-              </div>
-              <p className="text-secondary italic mb-8 font-body leading-relaxed">"{review.text}"</p>
-              <div>
-                <p className="font-bold text-primary font-headline">{review.name}</p>
-                <p className="text-[10px] uppercase tracking-widest text-primary-fixed-dim font-bold">{review.role}</p>
-              </div>
-            </motion.div>
-          ))}
+    <>
+      <section className="py-32 px-6 md:px-12 bg-surface-container-lowest" id="certificates">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-headline font-bold mb-16 text-center">My <span className="text-primary-fixed">Certifications</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {certificates.map((cert) => (
+              <button
+                key={cert.title}
+                className="bg-surface shadow-xl flex flex-col group border border-outline-variant/10 overflow-hidden hover:shadow-2xl transition-shadow cursor-pointer text-left"
+                onClick={() => setSelectedCert(cert)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setSelectedCert(cert);
+                  }
+                }}
+              >
+                <div className="aspect-4/3 bg-surface-container-low overflow-hidden">
+                  <img
+                    alt={cert.title}
+                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                    src={cert.img}
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-headline font-bold mb-2">{cert.title}</h3>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Certificate Modal */}
+      {selectedCert && (
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setSelectedCert(null)}
+            className="absolute inset-0 bg-surface-container-lowest/90 backdrop-blur-sm"
+          ></motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="relative bg-surface-container-low max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-outline-variant/10 shadow-2xl"
+          >
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-6 right-6 text-secondary hover:text-primary-fixed transition-colors z-10"
+            >
+              <X size={32} />
+            </button>
+            <div className="p-12">
+              <h3 className="text-3xl font-headline font-bold mb-6 text-center">{selectedCert.title}</h3>
+              <div className="flex justify-center">
+                <img
+                  src={selectedCert.img}
+                  alt={selectedCert.title}
+                  className="max-w-full max-h-[70vh] object-contain"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </>
   );
 };
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [responseMessage, setResponseMessage] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setStatus("success");
-        setResponseMessage(data.message);
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-        setResponseMessage("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      setStatus("error");
-      setResponseMessage("Failed to send message. Please check your connection.");
-    }
-  };
+  const [state, handleSubmit] = useForm('xeepzjok');
 
   return (
     <section className="py-32 px-6 md:px-12" id="contact">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-headline font-bold mb-12">Ready to <span className="text-primary-fixed">Optimize</span> Your Business?</h2>
-        <motion.div 
+        <h2 className="text-4xl md:text-5xl font-headline font-bold mb-12">Let's <span className="text-primary-fixed"> Work</span> Together</h2>
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="bg-surface-container-low p-8 md:p-12 text-left border border-outline-variant/10"
         >
-          {status === "success" ? (
+          {state.succeeded ? (
             <div className="text-center py-12">
               <div className="w-16 h-16 bg-primary-fixed/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="text-primary-fixed" size={32} />
               </div>
               <h3 className="text-2xl font-headline font-bold mb-4">Message Sent!</h3>
-              <p className="text-secondary mb-8">{responseMessage}</p>
-              <button 
-                onClick={() => setStatus("idle")}
+              <p className="text-secondary mb-8">Thanks for your message! I'll get back to you soon.</p>
+              <button
+                onClick={() => globalThis.location.reload()}
                 className="px-8 py-3 bg-primary-fixed text-on-primary-fixed font-bold rounded-sm uppercase tracking-widest text-xs"
               >
                 Send Another
@@ -567,59 +560,82 @@ const Contact = () => {
             <form className="space-y-8 mb-12" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Name</label>
-                  <input 
+                  <label htmlFor="name" className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Name</label>
+                  <input
+                    id="name"
+                    name="name"
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface outline-none" 
-                    placeholder="John Doe" 
+                    className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface outline-none"
+                    placeholder="John Doe"
                     type="text"
                   />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} />
                 </div>
                 <div>
-                  <label className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Email</label>
-                  <input 
+                  <label htmlFor="email" className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Email</label>
+                  <input
+                    id="email"
+                    name="email"
                     required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface outline-none" 
-                    placeholder="john@example.com" 
+                    className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface outline-none"
+                    placeholder="john@example.com"
                     type="email"
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Message</label>
-                <textarea 
+                <label htmlFor="message" className="block text-[10px] uppercase tracking-widest text-secondary mb-2 font-bold">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
                   required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface min-h-[150px] outline-none resize-none" 
+                  className="w-full bg-surface-container-lowest border-none border-b border-outline-variant/20 focus:ring-0 focus:border-primary-fixed-dim transition-all p-4 text-on-surface min-h-37.5 outline-none resize-none"
                   placeholder="How can I help you?"
                 ></textarea>
+                <ValidationError prefix="Message" field="message" errors={state.errors} />
               </div>
-              {status === "error" && <p className="text-error text-sm">{responseMessage}</p>}
-              <button 
-                disabled={status === "submitting"}
-                className="w-full bg-primary-fixed text-on-primary-fixed font-bold py-4 hover:bg-primary-fixed-dim transition-all uppercase tracking-widest text-sm rounded-sm disabled:opacity-50" 
+              {state.errors && (
+                <p className="text-error text-sm">Something went wrong. Please try again.</p>
+              )}
+              <button
+                disabled={state.submitting}
+                className="w-full bg-primary-fixed text-on-primary-fixed font-bold py-4 hover:bg-primary-fixed-dim transition-all uppercase tracking-widest text-sm rounded-sm disabled:opacity-50"
                 type="submit"
               >
-                {status === "submitting" ? "Sending..." : "Send Message"}
+                {state.submitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}
           <div className="border-t border-outline-variant/10 pt-12 text-center">
             <p className="text-secondary mb-6 font-body">Prefer a direct conversation?</p>
-            <a 
-              className="inline-flex items-center gap-3 text-primary-fixed font-bold text-lg group" 
-              href="https://calendly.com/architect-va"
+            <a
+              className="inline-flex items-center gap-3 text-primary-fixed font-bold text-lg group"
+              href="https://calendly.com/orlie-mascardo/new-meeting"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Book on Calendly 
+              Book on Calendly
               <Calendar size={20} className="group-hover:translate-x-1 transition-transform" />
             </a>
+            <div className="mt-6 flex flex-wrap justify-center gap-6">
+              <a
+                className="text-primary-fixed font-bold hover:underline"
+                href="https://www.upwork.com/freelancers/~013dd11288a96cd540?mp_source=share"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Upwork
+              </a>
+              <a
+                className="text-primary-fixed font-bold hover:underline"
+                href="https://v2.onlinejobs.ph/jobseekers/info/2874642"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Onlinejobsph
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -632,15 +648,15 @@ const Footer = () => {
     <footer className="bg-surface-container-lowest py-12 px-6 md:px-12 border-t border-outline-variant/5">
       <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto gap-8">
         <div className="text-primary-fixed font-bold text-xl font-headline tracking-tighter">
-          ARCHITECT.VA
+          JOM
         </div>
         <p className="text-on-secondary-container font-body text-xs tracking-wide opacity-60">
-          © 2024 Technical Architect VA. All rights reserved.
+          © 2026 John Orlie Mascardo. All rights reserved.
         </p>
         <div className="flex gap-8 font-body text-xs tracking-wide">
           <a 
             className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300" 
-            href="https://linkedin.com/in/architect-va"
+            href="https://www.linkedin.com/in/john-orlie-mascardo/"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -648,19 +664,35 @@ const Footer = () => {
           </a>
           <a 
             className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300" 
-            href="https://github.com/architect-va"
+            href="https://github.com/john-orlie-ma"
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub
           </a>
-          <a 
-            className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300" 
-            href="https://calendly.com/architect-va"
+          <a
+            className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300"
+            href="https://calendly.com/orlie-mascardo/new-meeting"
             target="_blank"
             rel="noopener noreferrer"
           >
             Calendly
+          </a>
+          <a
+            className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300"
+            href="https://www.upwork.com/freelancers/~013dd11288a96cd540?mp_source=share"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Upwork
+          </a>
+          <a
+            className="text-on-secondary-container hover:text-primary-fixed underline-offset-4 hover:underline transition-all duration-300"
+            href="https://v2.onlinejobs.ph/jobseekers/info/2874642"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Onlinejobsph
           </a>
         </div>
       </div>
@@ -716,7 +748,7 @@ export default function App() {
         <Services />
         <Portfolio />
         <Skills />
-        <Testimonials />
+        <Certificates />
         <Contact />
       </main>
       <Footer />
